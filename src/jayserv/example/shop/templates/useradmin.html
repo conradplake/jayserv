@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<Title></Title>
+</HEAD>
+
+
+<Body bgcolor="#000000" link="white" vlink="white">  
+
+
+<STYLE TYPE="text/css">
+@import url(/jayserv/demo_styles.css);
+</STYLE>
+
+<form action="/jayserv/UserAdministration.service" method="Post" enctype="text/plain">
+
+<P align="center">
+	
+	User Administration
+	<BR>
+	<BR>
+	<BR>
+
+
+	<table align="center">	
+	<tr>	
+		<td>ID:</td><td>~JHC:userForm:idInput~</td>
+	</tr>
+	<tr>	
+		<td><BR>Name:</td><td><BR>~JHC:userForm:nameInput~</td>
+	</tr>	
+	<tr>	
+		<td>Password:</td><td>~JHC:userForm:passwordInput~</td>
+	</tr>		
+	<tr>	
+		<td>Privilege:</td><td>~JHC:userForm:privSelect~</td><td align="right">	<Input type="reset" value="reset">	</td>
+	</tr>		
+	
+	</table>		
+
+<BR>
+	<table align="center">
+	<tr>
+		<td>	~JHC:userForm:infoText~	</td>
+	</tr>
+	</table>
+<BR>
+	<table align="center">	
+	<tr>
+		<td align="left">~JHC:userForm:add/updateButton~</td>
+		<td align="center">~JHC:userForm:deleteButton~</td>	
+		<td align="right">~JHC:userForm:searchButton~</td>
+	</tr>		
+	
+	</table>	
+
+<BR>
+<BR>
+	<table align="center" border="1">
+	<tr>
+		<td align="left">Search Results:</td>
+		<td align="right">~JHC:userSearchResult:total~</td>
+	</tr>
+	<tr>		
+		<td align="left"> <BR>Name </td>
+		<td align="right"> <BR>ID </td>
+	</tr>	
+	~DIR:ITERATE:userSearchResult~	
+	<tr>		
+		<td align="left"> ~JHC:userSearchResult:nextName~ </td>
+		<td align="right"> ~JHC:userSearchResult:nextId~ </td>
+	</tr>			
+	~DIR:END~
+	
+	</table>	
+
+
+<BR>
+	<table align="center">	
+	<tr>		
+		<td align="center"><BR><BR><a href="/jayserv/GetShopAdminPage.service">Back</a>	</td>
+	</tr>	
+	
+	</table>			
+
+</P>
+
+</form>
+
+</Body>
+</HTML>

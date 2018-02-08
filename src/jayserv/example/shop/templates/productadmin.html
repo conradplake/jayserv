@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<Title></Title>
+</HEAD>
+
+
+<Body bgcolor="#000000" link="white" vlink="white">  
+
+
+<STYLE TYPE="text/css">
+@import url(/jayserv/demo_styles.css);
+</STYLE>
+
+<form action="/jayserv/ProductAdministration.service" method="Post" enctype="text/plain">
+
+<P align="center">
+	
+	Product Administration
+	<BR>
+	<BR>
+	<BR>
+
+
+	<table align="center">	
+	<tr>	
+		<td>ID:</td><td>~JHC:productForm:idInput~</td>
+	</tr>
+	<tr>	
+		<td><BR>Name:</td><td><BR>~JHC:productForm:nameInput~</td>								
+	</tr>	
+	<tr>	
+		<td>Price:</td><td>~JHC:productForm:priceInput~</td>
+	</tr>	
+	<tr>	
+		<td>Category:</td><td>~JHC:productForm:categorySelect~</td><td align="right">	<Input type="reset" value="reset">	</td>
+	</tr>		
+	
+	</table>		
+
+<BR>
+	<table align="center">	
+	<tr>
+		<td>	~JHC:productForm:infoText~	</td>
+	</tr>
+	</table>
+<BR>
+	<table align="center">	
+	<tr>
+		<td align="left">~JHC:productForm:add/updateButton~</td>
+		<td align="center">~JHC:productForm:deleteButton~</td>	
+		<td align="right">~JHC:productForm:searchButton~</td>		
+	</tr>		
+	
+	</table>	
+
+<BR>
+<BR>
+	<table align="center" border="1">
+	<tr>
+		<td align="left">Search Results:</td>
+		<td align="right">~JHC:productSearchResult:total~</td>
+	</tr>
+	<tr>		
+		<td align="left"> <BR>Name </td>
+		<td align="right"> <BR>ID </td>
+	</tr>	
+	~DIR:ITERATE:productSearchResult~	
+	<tr>		
+		<td align="left"> ~JHC:productSearchResult:nextName~ </td>
+		<td align="right"> ~JHC:productSearchResult:nextId~ </td>
+	</tr>			
+	~DIR:END~
+	
+	</table>	
+
+
+<BR>
+	<table align="center">	
+	<tr>		
+		<td align="center"><BR><BR><a href="/jayserv/GetShopAdminPage.service">Back</a>	</td>
+	</tr>	
+	
+	</table>			
+
+</P>
+
+</form>
+
+</Body>
+</HTML>

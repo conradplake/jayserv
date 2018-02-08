@@ -1,0 +1,71 @@
+<HTML>
+<HEAD>
+<Title></Title>
+</HEAD>
+
+
+<Body bgcolor="#000000" link="white" vlink="white">  
+
+
+<STYLE TYPE="text/css">
+@import url(/jayserv/demo_styles.css);
+</STYLE>
+
+<P align="center">	
+		<form action="/jayserv/GetShopCatalog.service" method="Post" enctype="text/plain">
+		<table>					
+			<tr>
+				<td>Shop Catalog</td>
+			</tr>				
+		</table>
+		<BR>
+		<BR>	
+		<table>						
+			<tr>
+				<td>Category: </td><td>~JHC:catalog:categorySelect~</td>
+			</tr>									
+			<tr>
+				<td></td><td>	<BR><Input type="submit" value="select">	</td>
+			</tr>			
+		</table>						
+		<table>					
+			<tr>
+				<td>	<BR>~JHC:catalog:infoText~	</td>
+			</tr>				
+		</table>	
+		</form>		
+<HR>
+<P align="center">
+		<form action="/jayserv/Collector.service" method="Post" enctype="text/plain">		
+		<table>						
+			<tr>
+				<td align="center">~JHC:productTable:nameColumnText~</td>
+				<td align="center">~JHC:productTable:priceColumnText~</td>
+				<td align="right">~JHC:productTable:amountColumnText~</td>
+			</tr>
+			~DIR:ITERATE:productTable~
+			<tr>
+				<td align="center">~JHC:productTable:prod_name~</td>
+				<td align="center">~JHC:productTable:prod_price~</td>
+				<td align="right">~JHC:productTable:prod_amount~</td>
+			</tr>
+			~DIR:END~
+			<tr>
+			  	<td></td>
+				<td></td>
+				<td align="right">	~JHC:productTable:collectSubmit~	</td>
+			</tr>			
+		</table>
+		<BR>
+		<BR>
+		<table>					
+			<tr>
+				<td><a href="GetShopStartPage.service"> <-Back </a></td>
+			</tr>				
+		</table>
+		</form>
+		
+</P>
+
+</Body>
+</HTML>R><BR><a href="/jayserv/GetShopAdminPage.service">Back</a>	</td>
