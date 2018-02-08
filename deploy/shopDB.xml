@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tables>
+
+  <users>
+      
+    <user>
+    	<id>2</id>
+  	<name>guest</name>
+  	<password>guest</password>
+  	<privilegeID>3</privilegeID>
+    </user>
+    <user>
+    	<id>3</id>
+  	<name>customer</name>
+  	<password>customer</password>
+  	<privilegeID>2</privilegeID>
+    </user>
+  <user><id>5</id><name>Conrad</name><password>admin</password><privilegeID>1</privilegeID></user><user><id>6</id><name>a</name><password>a</password><privilegeID>1</privilegeID></user></users>
+  
+  <privileges>
+    <privilege>
+      <id>1</id>
+      <name>Administrator</name>
+      <class>jayserv.example.shop.security.AdministratorPrivilege</class>
+    </privilege>
+    <privilege>
+      <id>2</id>
+      <name>Customer</name>
+      <class>jayserv.example.shop.security.CustomerPrivilege</class>
+    </privilege>
+    <privilege>
+      <id>3</id>
+      <name>Guest</name>
+      <class>jayserv.example.shop.security.GuestPrivilege</class>
+    </privilege>
+  </privileges>
+		
+  <categories>
+    <category>
+    	<id>1</id>
+    	<name>Games</name>
+    </category>
+    <category>
+    	<id>2</id>
+    	<name>Tools</name>
+    </category>
+    <category>
+    	<id>3</id>
+    	<name>Stuff</name>
+    </category>
+  </categories>
+	
+  <products>
+    
+    
+    
+    
+    
+    
+    
+    
+  <product><id>6</id><name>Screwdriver</name><price>6</price><categoryID>2</categoryID></product><product><id>10</id><name>Drill</name><price>59</price><categoryID>2</categoryID></product><product><id>11</id><name>Falcon Patrol</name><price>9</price><categoryID>1</categoryID></product><product><id>12</id><name>Wheelchair</name><price>299</price><categoryID>3</categoryID></product><product><id>15</id><name>Turrican</name><price>20</price><categoryID>1</categoryID></product><product><id>16</id><name>Turrican 2</name><price>19</price><categoryID>1</categoryID></product><product><id>17</id><name>Giana Sisters</name><price>18</price><categoryID>1</categoryID></product><product><id>18</id><name>Monitor</name><price>99</price><categoryID>3</categoryID></product></products>
+  
+  
+</tables>

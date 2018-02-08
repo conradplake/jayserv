@@ -1,0 +1,95 @@
+<servicegateway>	
+	
+	<service>
+		<service-class>jayserv.example.shop.services.PageRequest</service-class>
+		<handler-class>jayserv.example.shop.handler.Tracker</handler-class>		
+	</service>				
+	
+	<service>
+		<service-class>jayserv.example.shop.services.GetLoginForm</service-class>
+		<handler-class>jayserv.example.shop.handler.GetLoginForm</handler-class>		
+	</service>
+	
+	<service>
+		<service-class>jayserv.example.shop.services.Login</service-class>
+		<handler-class>jayserv.example.shop.handler.LoginHandler</handler-class>		
+	</service>		
+	
+	<service>
+		<service-class>jayserv.example.shop.services.Logout</service-class>
+		<handler-class>jayserv.example.shop.handler.LogoutHandler</handler-class>		
+	</service>	
+	
+	<service>
+		<service-class>jayserv.example.shop.services.GetShopStartPage</service-class>
+		<handler-class>jayserv.example.shop.handler.GetShopStartPage</handler-class>		
+	</service>
+	
+	<service>
+		<service-class>jayserv.example.shop.services.GetShopCatalog</service-class>
+		<handler-class>jayserv.example.shop.handler.GetShopCatalog</handler-class>
+		<privilege-class>jayserv.example.shop.security.CustomerPrivilege</privilege-class>
+	</service>		
+	
+	<service>
+		<service-class>jayserv.example.shop.services.GetBasketPage</service-class>
+		<handler-class>jayserv.example.shop.handler.GetBasketPage</handler-class>
+		<privilege-class>jayserv.example.shop.security.CustomerPrivilege</privilege-class>
+	</service>
+	
+	<service>
+		<service-class>jayserv.example.shop.services.BasketUpdate</service-class>
+		<handler-class>jayserv.example.shop.handler.BasketUpdate</handler-class>
+		<privilege-class>jayserv.example.shop.security.CustomerPrivilege</privilege-class>
+	</service>		
+	
+	<service>
+		<service-class>jayserv.example.shop.services.Collector</service-class>
+		<handler-class>jayserv.example.shop.handler.Collector</handler-class>
+		<privilege-class>jayserv.example.shop.security.CustomerPrivilege</privilege-class>
+	</service>
+	
+	<service>
+		<service-class>jayserv.example.shop.services.GetPayDeskPage</service-class>
+		<handler-class>jayserv.example.shop.handler.GetPayDeskPage</handler-class>
+		<privilege-class>jayserv.example.shop.security.CustomerPrivilege</privilege-class>
+	</service>
+	
+	<service>
+		<service-class>jayserv.example.shop.services.Paymatic</service-class>
+		<handler-class>jayserv.example.shop.handler.Paymatic</handler-class>
+		<privilege-class>jayserv.example.shop.security.CustomerPrivilege</privilege-class>
+	</service>
+	
+	<service>
+		<service-class>jayserv.example.shop.services.GetShopAdminPage</service-class>
+		<handler-class>jayserv.example.shop.handler.GetShopAdminPage</handler-class>
+		<privilege-class>jayserv.example.shop.security.AdministratorPrivilege</privilege-class>
+	</service>
+	
+	<service>
+		<service-class>jayserv.example.shop.services.GetUserAdminPage</service-class>
+		<handler-class>jayserv.example.shop.handler.GetUserAdminPage</handler-class>
+		<privilege-class>jayserv.example.shop.security.AdministratorPrivilege</privilege-class>
+	</service>
+	
+	<service>
+		<service-class>jayserv.example.shop.services.GetProductAdminPage</service-class>
+		<handler-class>jayserv.example.shop.handler.GetProductAdminPage</handler-class>
+		<privilege-class>jayserv.example.shop.security.AdministratorPrivilege</privilege-class>
+	</service>
+	
+	<service>
+		<service-class>jayserv.example.shop.services.ProductAdministration</service-class>
+		<handler-class>jayserv.example.shop.handler.ProductAdministration</handler-class>
+		<privilege-class>jayserv.example.shop.security.AdministratorPrivilege</privilege-class>
+	</service>
+	
+	<service>
+		<service-class>jayserv.example.shop.services.UserAdministration</service-class>
+		<handler-class>jayserv.example.shop.handler.UserAdministration</handler-class>
+		<privilege-class>jayserv.example.shop.security.AdministratorPrivilege</privilege-class>
+	</service>
+			
+	
+</servicegateway>
