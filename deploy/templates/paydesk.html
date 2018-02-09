@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+<Title></Title>
+</HEAD>
+
+
+<Body bgcolor="#000000" text="#ffffff" link="white" vlink="white">  
+
+
+<STYLE TYPE="text/css">
+@import url(/jayserv/demo_styles.css);
+</STYLE>
+
+<P align="center">
+	<form action="/jayserv/Paymatic.service" method="Post" enctype="text/plain">	
+		<table>
+			<tr>
+				<td></td>
+				<td align="center">Your Order</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td align="center"><BR><BR>Product<BR><BR></td>
+				<td align="center"><BR><BR>Price<BR><BR></td>
+				<td align="center"><BR><BR>Amount<BR><BR></td>
+			</tr>	
+			~DIR:ITERATE:paydesk_productTable~
+			<tr>
+				<td align="center">~JHC:paydesk_productTable:prod_name~</td>
+				<td align="center">~JHC:paydesk_productTable:prod_price~</td>
+				<td align="center">~JHC:paydesk_productTable:prod_amount~</td>
+			</tr>
+			~DIR:END~
+			<tr>
+				<td></td>
+				<td align="center"><br><br>Total = ~JHC:paydesk_productTable:totalSum~</td>
+				<td></td>
+			</tr>			
+			
+			<tr>
+				<td></td>
+				<td><P align="center"><br><br><input type="submit" value="Go Buy It"></P></td>
+				<td></td>
+			</tr>	
+			<tr>
+				<td></td>
+				<td><P align="center"><br><br><br><a href="/jayserv/GetShopStartPage.service"> <-Back </a></P></td>
+				<td></td>
+			</tr>				
+		</table>
+		<BR>		
+	</form>	
+</P>
+
+</Body>
+</HTML>
