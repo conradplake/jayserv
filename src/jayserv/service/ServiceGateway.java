@@ -220,7 +220,7 @@ public class ServiceGateway extends HttpServlet{
   protected void writeUnknownServiceMessage(HttpServletResponse resp, String servicename){  	
   	try{  
   	  ServletOutputStream os = resp.getOutputStream();
-  	  os.println("<hmtl>");
+  	  os.println("<html>");
   	  os.println("<title>");
   	  os.println("ServiceGateway");
   	  os.println("</title>");  	
@@ -235,7 +235,7 @@ public class ServiceGateway extends HttpServlet{
   	    os.println(" - "+(String)e.nextElement());
   	  }
   	  os.println("</body>");
-  	  os.println("</hmtl>");
+  	  os.println("</html>");
   	}
   	catch(java.io.IOException ioe){
   	  System.out.println("** ServiceGateway: could not write to client");
@@ -246,7 +246,7 @@ public class ServiceGateway extends HttpServlet{
   protected void writeServiceExceptionMessage(HttpServletResponse resp, String exceptionmessage){  	
   	try{  
   	  ServletOutputStream os = resp.getOutputStream();
-  	  os.println("<hmtl>");
+  	  os.println("<html>");
   	  os.println("<title>");
   	  os.println("ServiceGateway");
   	  os.println("</title>");  	
@@ -256,7 +256,7 @@ public class ServiceGateway extends HttpServlet{
   	  os.println("<br>");  	  
   	  os.println("Exception was: "+exceptionmessage);
   	  os.println("</body>");
-  	  os.println("</hmtl>");
+  	  os.println("</html>");
   	}
   	catch(java.io.IOException ioe){
   	  System.out.println("** ServiceGateway: could not write to client");
