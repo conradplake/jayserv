@@ -24,16 +24,7 @@
             <param-name>dbschema_url</param-name>
             <param-value>../webapps/jayserv/shopDB.xml</param-value>
         </init-param>
-    </servlet>       
-    
-    <servlet>
-        <servlet-name>
-            BeanClient
-        </servlet-name>
-        <servlet-class>
-            jayserv.example.shop.comp.beans.BeanClient
-        </servlet-class>        
-    </servlet>      
+    </servlet>   
  	
     <servlet-mapping>
     	<servlet-name>
@@ -42,16 +33,7 @@
         <url-pattern>
             *.service
         </url-pattern>                
-    </servlet-mapping>	
-    
-    <servlet-mapping>
-    	<servlet-name>
-            BeanClient
-        </servlet-name>
-        <url-pattern>
-            test.ejb
-        </url-pattern>                
-    </servlet-mapping>	
+    </servlet-mapping>
  
  
     <!-- Default login configuration uses BASIC authentication -->
