@@ -78,6 +78,8 @@ public class HtmlPageRenderer{
 	  }
   	  line = bReader.readLine();
    	}
+  	bReader.close();
+  	
   	return buffer;  	  	
   }
   

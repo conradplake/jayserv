@@ -54,6 +54,7 @@ public class HtmlFileRenderer{
    	  buffer.append(line);
   	  line = bReader.readLine();
   	}
+  	bReader.close();
   	return buffer;  	  	
   }
  
