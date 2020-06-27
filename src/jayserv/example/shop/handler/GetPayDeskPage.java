@@ -4,13 +4,13 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import jayserv.example.shop.comp.GlobalCache;
 import jayserv.example.shop.comp.ProductTable;
 import jayserv.example.shop.comp.ShopDB;
 import jayserv.example.shop.comp.ShopGateway;
 import jayserv.example.shop.comp.ShopInputElements;
 import jayserv.example.shop.comp.ShopUser;
 import jayserv.html.PlainText;
-import jayserv.service.GlobalCache;
 import jayserv.service.ServiceContext;
 import jayserv.service.ServiceException;
 

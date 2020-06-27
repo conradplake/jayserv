@@ -1,8 +1,8 @@
 package jayserv.example.shop.handler;
 
+import jayserv.example.shop.comp.GlobalCache;
 import jayserv.example.shop.comp.ShopGateway;
 import jayserv.html.renderer.HtmlFileRenderer;
-import jayserv.service.GlobalCache;
 import jayserv.service.ServiceContext;
 import jayserv.service.ServiceException;
 
@@ -14,7 +14,7 @@ public class GetShopStartPage extends ResponseHandler{
   	  ctx.getResponse().getOutputStream().println( renderer.render().toString() );
 	}
 	catch(java.io.IOException ioe){
-	  throw new ServiceException( "IOException: "+ioe.getMessage() );
+	  throw new ServiceException( ioe.getMessage(), ioe);
 	}
   }
 }

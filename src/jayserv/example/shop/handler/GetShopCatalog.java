@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import jayserv.example.shop.comp.GlobalCache;
 import jayserv.example.shop.comp.Links;
 import jayserv.example.shop.comp.ProductTable;
 import jayserv.example.shop.comp.ShopDB;
@@ -16,8 +17,6 @@ import jayserv.html.Input;
 import jayserv.html.PlainText;
 import jayserv.html.Select;
 import jayserv.html.forms.DefaultFormMap;
-import jayserv.service.GlobalCache;
-import jayserv.service.IncompatibleRequestException;
 import jayserv.service.ServiceContext;
 import jayserv.service.ServiceException;
 
@@ -71,13 +70,11 @@ public class GetShopCatalog extends ResponseHandler implements ShopInputElements
     
   private String getCategoryId(HttpServletRequest req){
   	String id = null;
-	try{
-	  DefaultFormMap formMap = new DefaultFormMap();
-	  formMap.map(req);
-  	  id = (String) formMap.getValue(CATEGORY);
-    }catch(IncompatibleRequestException ire){
-	  id = null;
-    }
+	
+	DefaultFormMap formMap = new DefaultFormMap();
+	formMap.map(req);
+  	id = (String) formMap.getValue(CATEGORY);
+  	
 	return id;
   }
     

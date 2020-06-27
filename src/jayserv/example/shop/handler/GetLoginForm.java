@@ -1,10 +1,10 @@
 package jayserv.example.shop.handler;
 
+import jayserv.example.shop.comp.GlobalCache;
 import jayserv.example.shop.comp.ShopGateway;
 import jayserv.example.shop.comp.ShopInputElements;
 import jayserv.html.DefaultHtmlComponent;
 import jayserv.html.Input;
-import jayserv.service.GlobalCache;
 import jayserv.service.ServiceContext;
 import jayserv.service.ServiceException;
 

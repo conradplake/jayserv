@@ -1,8 +1,8 @@
 package jayserv.example.shop.handler;
 
+import jayserv.example.shop.comp.GlobalCache;
 import jayserv.example.shop.comp.ShopGateway;
 import jayserv.html.renderer.HtmlFileRenderer;
-import jayserv.service.GlobalCache;
 import jayserv.service.ServiceContext;
 import jayserv.service.ServiceException;
 

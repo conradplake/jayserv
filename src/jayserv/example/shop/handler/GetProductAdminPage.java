@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import jayserv.example.shop.comp.GlobalCache;
 import jayserv.example.shop.comp.ProductSearchResult;
 import jayserv.example.shop.comp.ShopDB;
 import jayserv.example.shop.comp.ShopGateway;
@@ -15,7 +16,6 @@ import jayserv.html.Input;
 import jayserv.html.PlainText;
 import jayserv.html.Select;
 import jayserv.html.forms.RepopulationFormMap;
-import jayserv.service.GlobalCache;
 import jayserv.service.ServiceContext;
 import jayserv.service.ServiceException;
 
@@ -78,7 +78,7 @@ public class GetProductAdminPage extends ResponseHandler implements ShopInputEle
 
   public void handleSecured(ServiceContext ctx) throws ServiceException{
     try{
-	  String prodId = ctx.getRequest().getParameter(FILL_BY_ID);
+	  String prodId = ctx.getRequest().getParameter(ProductSearchResult.FILL_BY_ID);
 	  if(prodId!=null && prodId.length()>0){
 	    fillForm(prodId);
 	  }
@@ -178,8 +178,6 @@ public class GetProductAdminPage extends ResponseHandler implements ShopInputEle
 	rfmap.repopulateInput( (Input)comp.getHtmlElement("priceInput") );	
 	rfmap.repopulateSelect( (Select)comp.getHtmlElement("categorySelect") );
   }
-  
-  public static String FILL_BY_ID = "fill_by_id";
   
   public static String ADD_UPDATE_BUTTON_LABEL 	= "add/update";
   public static String SEARCH_BUTTON_LABEL 		= "search";

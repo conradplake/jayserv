@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import jayserv.example.shop.comp.ErrorPage;
+import jayserv.example.shop.comp.GlobalCache;
 import jayserv.example.shop.comp.ProductTable;
 import jayserv.example.shop.comp.ShopDB;
 import jayserv.example.shop.comp.ShopGateway;
@@ -13,7 +14,6 @@ import jayserv.html.Input;
 import jayserv.html.Link;
 import jayserv.html.PlainText;
 import jayserv.html.renderer.HtmlPageRenderer;
-import jayserv.service.GlobalCache;
 import jayserv.service.ServiceContext;
 import jayserv.service.ServiceException;
 
