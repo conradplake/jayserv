@@ -34,18 +34,13 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import jayserv.service.IncompatibleRequestException;
-
 public class DefaultFormMap implements FormMap{
 
   public DefaultFormMap(){
 	mapTable = new Hashtable();
   }
 
-  public void map(HttpServletRequest req) throws IncompatibleRequestException{
-  	if(!req.getMethod().equalsIgnoreCase("POST")){
-  	  throw new IncompatibleRequestException("Could not load properties with request body. HTTP Request was not POSTed!");
-  	}  	
+  public void map(HttpServletRequest req){
   	try{	  
 	  BufferedReader br = new BufferedReader( new InputStreamReader( req.getInputStream() ) );
 	  String line = br.readLine();
@@ -60,7 +55,7 @@ public class DefaultFormMap implements FormMap{
 	  }      	  
   	}
   	catch(IOException ioe){
-  	  throw new IncompatibleRequestException("Could not map request.");
+  	  throw new RuntimeException("Could not map request.", ioe);
   	}
   }
   

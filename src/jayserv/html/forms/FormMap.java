@@ -28,12 +28,10 @@ import java.util.Enumeration;
 
 import javax.servlet.http.HttpServletRequest;
 
-import jayserv.service.IncompatibleRequestException;
-
 
 public interface FormMap{
 
-  public void map(HttpServletRequest request) throws IncompatibleRequestException;
+  public void map(HttpServletRequest request);
   public String getValue(String key); 
   public Enumeration keys();
 }
