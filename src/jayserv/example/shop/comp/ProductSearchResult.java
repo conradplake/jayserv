@@ -3,7 +3,6 @@ package jayserv.example.shop.comp;
 import java.util.LinkedList;
 import java.util.List;
 
-import jayserv.example.shop.handler.GetProductAdminPage;
 import jayserv.html.DefaultHtmlComponent;
 import jayserv.html.HtmlElement;
 import jayserv.html.Iterative;
@@ -15,8 +14,8 @@ public class ProductSearchResult extends DefaultHtmlComponent implements Iterati
 
   public ProductSearchResult(String id){
     super(id);
-	productNames = new LinkedList();
-	productIds   = new LinkedList();	
+	productNames = new LinkedList<>();
+	productIds   = new LinkedList<>();	
   }
   
   public boolean hasNext(){
@@ -31,7 +30,7 @@ public class ProductSearchResult extends DefaultHtmlComponent implements Iterati
 	  //return new PlainText( (String)productIds.get(pointer) );
 	  String prodId = (String) productIds.get(pointer);
 	  Link link = new Link(TO_PRODUCTADMINISTRATION, prodId);
-	  link.addParameter(GetProductAdminPage.FILL_BY_ID, prodId);
+	  link.addParameter(FILL_BY_ID, prodId);
 	  return link;
 	}
 	else if (id.equals(TOTAL) ){
@@ -63,7 +62,9 @@ public class ProductSearchResult extends DefaultHtmlComponent implements Iterati
   public static final String NEXT_ID   = "nextId";
   public static final String TOTAL     = "total";
   
-  private List productIds, productNames;
+  public static String FILL_BY_ID = "fill_by_id";
+  
+  private List<String> productIds, productNames;
   private int pointer;
   private int products;
 }

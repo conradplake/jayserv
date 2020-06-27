@@ -3,7 +3,6 @@ package jayserv.example.shop.comp;
 import java.util.LinkedList;
 import java.util.List;
 
-import jayserv.example.shop.handler.GetUserAdminPage;
 import jayserv.html.DefaultHtmlComponent;
 import jayserv.html.HtmlElement;
 import jayserv.html.Iterative;
@@ -15,8 +14,8 @@ public class UserSearchResult extends DefaultHtmlComponent implements Iterative,
 
   public UserSearchResult(String id){
     super(id);
-	userNames = new LinkedList();
-	userIds   = new LinkedList();	
+	userNames = new LinkedList<>();
+	userIds   = new LinkedList<>();	
   }
   
   public boolean hasNext(){
@@ -31,7 +30,7 @@ public class UserSearchResult extends DefaultHtmlComponent implements Iterative,
 	  //return new PlainText( (String)productIds.get(pointer) );
 	  String userId = (String) userIds.get(pointer);
 	  Link link = new Link(TO_USERADMINISTRATION, userId);
-	  link.addParameter(GetUserAdminPage.FILL_BY_ID, userId);
+	  link.addParameter(FILL_BY_ID, userId);
 	  return link;
 	}
 	else if (id.equals(TOTAL) ){
@@ -63,7 +62,9 @@ public class UserSearchResult extends DefaultHtmlComponent implements Iterative,
   public static final String NEXT_ID   = "nextId";
   public static final String TOTAL     = "total";
   
-  private List userIds, userNames;
+  public static String FILL_BY_ID = "fill_by_id";
+  
+  private List<String> userIds, userNames;
   private int pointer;
   private int users;
 }

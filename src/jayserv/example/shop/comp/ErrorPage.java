@@ -4,7 +4,6 @@ import jayserv.html.DefaultHtmlComponent;
 import jayserv.html.Link;
 import jayserv.html.PlainText;
 import jayserv.html.TemplatedHtmlPage;
-import jayserv.service.GlobalCache;
 
 public class ErrorPage extends TemplatedHtmlPage{
 

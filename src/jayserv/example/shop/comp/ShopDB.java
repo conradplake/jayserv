@@ -15,8 +15,6 @@ import org.jdom.JDOMException;
 import org.jdom.input.SAXBuilder;
 import org.jdom.output.XMLOutputter;
 
-import jayserv.service.GlobalCache;
-
 public class ShopDB{
 
   private ShopDB(){
@@ -63,11 +61,11 @@ public class ShopDB{
   	return ( new Integer(maxId+1) ).toString();
   }
   
-  public Map mapEntity(Element entity){
-  	HashMap map = new HashMap();  	
-  	Iterator it = entity.getChildren().iterator();
+  public Map<String, String> mapEntity(Element entity){
+  	HashMap<String, String> map = new HashMap();  	
+  	Iterator<Element> it = entity.getChildren().iterator();
   	while(it.hasNext()){
-  	  Element columnElem = (Element) it.next();
+  	  Element columnElem = it.next();
   	  map.put( columnElem.getName(), columnElem.getText().trim() );
   	}  	
   	return map;
