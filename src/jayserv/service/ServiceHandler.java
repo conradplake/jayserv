@@ -24,9 +24,29 @@ USA
 
 package jayserv.service;
 
+import javax.servlet.http.HttpSession;
 
-public interface ServiceHandler{
+public abstract class ServiceHandler {
 
-  public void handle(ServiceContext servicecontext) throws ServiceException;
-  
+	public void handle(ServiceContext servicecontext, SessionGuard sessionGuard) throws ServiceException {
+		HttpSession session = servicecontext.getSession();
+		if (accessPrivilege == null || (sessionGuard != null && sessionGuard.hasPrivilege(session, accessPrivilege))) {
+			handleSecured(servicecontext);
+		} else {
+			handleDenied(servicecontext);
+		}
+	}
+
+	/* override me */
+	public abstract void handleDenied(ServiceContext servicecontext) throws ServiceException;
+
+	/* override me */
+	public abstract void handleSecured(ServiceContext servicecontext) throws ServiceException;
+
+	protected void setAccessPrivilege(Privilege privilege) {
+		accessPrivilege = privilege;
+	}
+
+	private Privilege accessPrivilege;
+
 }

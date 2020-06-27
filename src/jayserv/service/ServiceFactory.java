@@ -68,7 +68,7 @@ public class ServiceFactory
   	  return handler;
     }  
 	
-	public static Class newServiceHandlerClass(String classname){
+	public static Class<ServiceHandler> newServiceHandlerClass(String classname){
   	  Class c = null;
   	  try{
   	    c = Class.forName(classname);

@@ -39,19 +39,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.jdom.Document;
 import org.jdom.Element;
 
-import jayserv.service.security.HashedSessionGuard;
-import jayserv.service.security.HttpSessionGuard;
-import jayserv.service.security.Privilege;
-import jayserv.service.security.PrivilegeFactory;
-import jayserv.service.security.SecureServiceHandler;
-
 public class ServiceGateway extends HttpServlet{     
 
-  public void setSessionGuard(HttpSessionGuard guard){
+  public void setSessionGuard(SessionGuard guard){
   	this.sessionGuard = guard;
   }
   
-  public HttpSessionGuard getSessionGuard(){
+  public SessionGuard getSessionGuard(){
   	return sessionGuard;
   }
 
@@ -100,8 +94,8 @@ public class ServiceGateway extends HttpServlet{
   	}
   }
 
-  public HandlerChain buildHandlerChain(Service service){
-	HandlerChain chain = new DefaultHandlerChain();	
+  private HandlerChain buildHandlerChain(Service service){
+	HandlerChain chain = new HandlerChain();	
 	Iterator it = getServiceChain(service.getClass()).iterator();
 	while( it.hasNext() ){
 	  String servname = (String)it.next();
@@ -112,7 +106,7 @@ public class ServiceGateway extends HttpServlet{
 		  ServiceHandler handler = (ServiceHandler) handlerClass.newInstance();
 		  Privilege priv 		 = (Privilege) privilegeTable.get(servname);
 		  if(priv!=null){
-		    ((SecureServiceHandler)handler).setAccessPrivilege(priv);
+		    ((ServiceHandler)handler).setAccessPrivilege(priv);
 		  }
 	      chain.addHandler(handler);
 		}catch(InstantiationException ie){
@@ -131,10 +125,9 @@ public class ServiceGateway extends HttpServlet{
   }     
   
   public void serve(ServiceContext ctx) throws ServiceException{
-  	ctx.setSessionGuard(sessionGuard);
   	ServiceHandler handler = ctx.nextHandler();
   	while( handler!=null && !ctx.handled() ){
-  	  handler.handle(ctx);
+  	  handler.handle(ctx, sessionGuard);
   	  handler = ctx.nextHandler();
   	}
   }
@@ -155,19 +148,19 @@ public class ServiceGateway extends HttpServlet{
    	serviceTable   = new Hashtable();
    	handlerTable   = new Hashtable();
 	privilegeTable = new Hashtable();
-   	sessionGuard   = new HashedSessionGuard();    	
+   	sessionGuard   = new SessionGuard();    	
   }
   
-  public List loadServices(Document serviceDocument){  	
-  	List result = new LinkedList();
-  	Iterator it = serviceDocument.getRootElement().getChildren(SERVICE_TAG).iterator();
+  public List<String> loadServices(Document serviceDocument){  	
+  	List<String> result = new LinkedList();
+  	Iterator<Element> it = serviceDocument.getRootElement().getChildren(SERVICE_TAG).iterator();
   	while(it.hasNext()){	
-  	  Element serviceElem    = (Element)it.next();
+  	  Element serviceElem    = it.next();
 	  String serviceclass	 = serviceElem.getChild(SERVICECLASS_TAG).getText().trim();	
 	  String handlerclass    = serviceElem.getChild(HANDLERCLASS_TAG).getText().trim();	  
 	  Element privilegeElem  = serviceElem.getChild(PRIVILEGECLASS_TAG);	  	 
 	  Service service        = ServiceFactory.newServiceInstance(serviceclass);
-	  Class handlerClass     = ServiceFactory.newServiceHandlerClass(handlerclass);	  
+	  Class<ServiceHandler> handlerClass     = ServiceFactory.newServiceHandlerClass(handlerclass);	  
 	  if(service==null){
 	    System.out.println("** ServiceGateway: Could not load service class  '"+serviceclass+"'. Discarding service.");
 	    continue;
@@ -188,9 +181,9 @@ public class ServiceGateway extends HttpServlet{
   	return result;
   }    
       
-  protected List getServiceChain(Class serviceclass){
-      LinkedList servicechain = new LinkedList();
-      LinkedList superclasses = new LinkedList();
+  protected List<String> getServiceChain(Class serviceclass){
+      LinkedList<String> servicechain = new LinkedList();
+      LinkedList<Class> superclasses = new LinkedList();
       Class superclass = serviceclass.getSuperclass();
       while(superclass!=null){
 	  superclasses.add(superclass);
@@ -272,5 +265,5 @@ public class ServiceGateway extends HttpServlet{
   private Hashtable serviceTable;
   private Hashtable handlerTable;
   private Hashtable privilegeTable;
-  private HttpSessionGuard sessionGuard;
+  private SessionGuard sessionGuard;
 }

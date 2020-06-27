@@ -24,18 +24,25 @@ USA
 
 package jayserv.service;
 
-public class ServiceException extends Exception {
+public class PrivilegeFactory{
 
-	public ServiceException() {
-		super();
+  public static Privilege newPrivilegeInstance(String classname){
+  	Privilege privilege = null;
+  	try{
+  	  privilege = (Privilege) Class.forName(classname).newInstance();
+  	}
+  	catch(ClassNotFoundException cnfe){
+  	  //System.out.println("PrivilegeFactory: newPrivilegeInstance -> class '"+classname+"' not found!");
+  	  //cnfe.printStackTrace();
 	}
-
-	public ServiceException(String msg) {
-		super(msg);
+	catch(InstantiationException ie){
+	  //System.out.println("PrivilegeFactory: newPrivilegeInstance -> instantiation failed!");
+  	  //ie.printStackTrace();
 	}
-
-	public ServiceException(String msg, Throwable t) {
-		super(msg, t);
-	}
-
+	catch(IllegalAccessException iae){
+	  //System.out.println("PrivilegeFactory: newPrivilegeInstance -> illegal access!");
+  	  //iae.printStackTrace();
+  	}
+  	return privilege;
+  }
 }

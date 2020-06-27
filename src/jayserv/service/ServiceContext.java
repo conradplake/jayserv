@@ -23,90 +23,67 @@ USA
 */
 
 package jayserv.service;
-  
-import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import jayserv.service.security.HttpSessionGuard;
-  
-public class ServiceContext{
+public class ServiceContext {
 
-  public ServiceContext(Service service, HttpServletRequest req, HttpServletResponse resp){  	
-  	this.service = service;
-  	this.req     = req;
-  	this.resp    = resp;
-  	handlerchain = new DefaultHandlerChain();  	
-  	statemap     = new HashMap();
-  }
-  
-  public Service getService(){
-  	return service;
-  }
-  
-  public HttpSession getSession(){
-  	return req.getSession();
-  }    
-  
-  public HttpServletRequest getRequest(){
-  	return req;
-  }
-  
-  public HttpServletResponse getResponse(){
-  	return resp;
-  }
-  
-  public void setHandlerChain(HandlerChain handlerchain){
-  	this.handlerchain = handlerchain;
-  }
-  
-  public HandlerChain getHandlerChain(){
-  	return handlerchain;
-  }  
-    
-  public void addHandler(ServiceHandler handler){
-  	handlerchain.addHandler(handler);
-  }    
-  
-  public void pushHandler(ServiceHandler handler){
-  	handlerchain.insertHandlerAt(handler, 0);
-  } 
-  
-  public ServiceHandler nextHandler(){  	
-	return handlerchain.getNextHandler();
-  } 
+	public ServiceContext(Service service, HttpServletRequest req, HttpServletResponse resp) {
+		this.service = service;
+		this.req = req;
+		this.resp = resp;
+		handlerchain = new HandlerChain();
+	}
 
-  protected void setSessionGuard(HttpSessionGuard guard){
-  	sessionGuard = guard;
-  }
-  
-  public HttpSessionGuard getSessionGuard(){
-  	return sessionGuard;
-  }
-  
-  public void setHandled(boolean bool){
-  	handled = bool;    
-  }
-  
-  public boolean handled(){
-  	return handled;
-  }
-  
-  public void putState(Object key, Object value){
-        statemap.put(key, value);
-  }
+	public Service getService() {
+		return service;
+	}
 
-  public Object getState(Object key){
-	return statemap.get(key);
-  }
-  
-  private Service	      	  service;
-  private HttpServletRequest  req;
-  private HttpServletResponse resp;
-  private HttpSessionGuard    sessionGuard;
-  private HandlerChain	      handlerchain;
-  private HashMap	      	  statemap;
-  private boolean 	      	  handled = false;
+	public HttpSession getSession() {
+		return req.getSession();
+	}
+
+	public HttpServletRequest getRequest() {
+		return req;
+	}
+
+	public HttpServletResponse getResponse() {
+		return resp;
+	}
+
+	public void setHandlerChain(HandlerChain handlerchain) {
+		this.handlerchain = handlerchain;
+	}
+
+	public HandlerChain getHandlerChain() {
+		return handlerchain;
+	}
+
+	public void addHandler(ServiceHandler handler) {
+		handlerchain.addHandler(handler);
+	}
+
+	public void pushHandler(ServiceHandler handler) {
+		handlerchain.insertHandlerAt(handler, 0);
+	}
+
+	public ServiceHandler nextHandler() {
+		return handlerchain.getNextHandler();
+	}
+
+	public void setHandled(boolean bool) {
+		handled = bool;
+	}
+
+	public boolean handled() {
+		return handled;
+	}
+
+	private Service service;
+	private HttpServletRequest req;
+	private HttpServletResponse resp;
+	private HandlerChain handlerchain;
+	private boolean handled = false;
 }

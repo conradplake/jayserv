@@ -24,18 +24,5 @@ USA
 
 package jayserv.service;
 
-public class ServiceException extends Exception {
-
-	public ServiceException() {
-		super();
-	}
-
-	public ServiceException(String msg) {
-		super(msg);
-	}
-
-	public ServiceException(String msg, Throwable t) {
-		super(msg, t);
-	}
-
+public interface Privilege{
 }
