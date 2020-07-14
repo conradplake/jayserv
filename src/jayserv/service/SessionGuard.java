@@ -46,7 +46,7 @@ public class SessionGuard {
   
   public boolean hasPrivilege(HttpSession session, Privilege priv){  	
   	boolean has = false;
-  	Privilege assignedPriv = (Privilege) sessionTable.get( session.getId() );
+  	Privilege assignedPriv = sessionTable.get( session.getId() );
 	if (assignedPriv!=null){		
 	  List<Class> classChain = getClassChain( assignedPriv.getClass() );
 	  has = classChain.contains( priv.getClass() );

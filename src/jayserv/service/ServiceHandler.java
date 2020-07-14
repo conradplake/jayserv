@@ -26,7 +26,7 @@ package jayserv.service;
 
 import javax.servlet.http.HttpSession;
 
-public abstract class ServiceHandler {
+public class ServiceHandler {
 
 	public void handle(ServiceContext servicecontext, SessionGuard sessionGuard) throws ServiceException {
 		HttpSession session = servicecontext.getSession();
@@ -38,10 +38,14 @@ public abstract class ServiceHandler {
 	}
 
 	/* override me */
-	public abstract void handleDenied(ServiceContext servicecontext) throws ServiceException;
+	public void handleDenied(ServiceContext servicecontext) throws ServiceException {
+		
+	}
 
 	/* override me */
-	public abstract void handleSecured(ServiceContext servicecontext) throws ServiceException;
+	public void handleSecured(ServiceContext servicecontext) throws ServiceException {
+		
+	}
 
 	protected void setAccessPrivilege(Privilege privilege) {
 		accessPrivilege = privilege;
