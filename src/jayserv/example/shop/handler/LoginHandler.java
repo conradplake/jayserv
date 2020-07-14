@@ -1,5 +1,6 @@
 package jayserv.example.shop.handler;
 
+import java.security.MessageDigest;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -7,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import jayserv.example.shop.comp.ErrorPage;
 import jayserv.example.shop.comp.GlobalCache;
+import jayserv.example.shop.comp.Logger;
 import jayserv.example.shop.comp.ShopDB;
 import jayserv.example.shop.comp.ShopGateway;
 import jayserv.example.shop.comp.ShopInputElements;
@@ -29,7 +31,8 @@ public class LoginHandler extends ResponseHandler implements ShopInputElements {
 		super(GlobalCache.getInstance().get(ShopGateway.TEMPLATES_BASEDIR) + "loginsuccess.html");
 	}
 
-	public void handle(ServiceContext ctx, SessionGuard sessionGuard) throws ServiceException {
+	@Override
+	public final void handle(ServiceContext ctx, SessionGuard sessionGuard) throws ServiceException {
 		try {
 			FormMap formmap = new DefaultFormMap();
 			formmap.map(ctx.getRequest());
@@ -63,12 +66,13 @@ public class LoginHandler extends ResponseHandler implements ShopInputElements {
 	 */
 	private Privilege getPrivilegeFrom(String username, String password) {
 		Privilege priv = null;
+		String passwordHash = sha256(password);
 		Iterator<Map<String, String>> it = ShopDB.getInstance().getMappedEntitiesWhere("users", "name", username)
 				.iterator();
 		while (it.hasNext()) {
 			Map<String, String> user = it.next();
 			String pw = user.get("password");
-			if (pw.equals(password)) {
+			if (pw.equals(passwordHash)) {
 				String privID = user.get("privilegeID");
 				Map<String, String> privMap = ShopDB.getInstance().getMappedEntity("privileges", privID);
 				String privClassname = privMap.get("class");
@@ -79,6 +83,30 @@ public class LoginHandler extends ResponseHandler implements ShopInputElements {
 		return priv;
 	}
 
+	private static String sha256(String base) {
+		
+		if(base==null) {
+			return "";
+		}
+		
+	    try{
+	        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+	        byte[] hash = digest.digest(base.getBytes("UTF-8"));
+	        StringBuilder hexString = new StringBuilder();
+
+	        for (int i = 0; i < hash.length; i++) {
+	            String hex = Integer.toHexString(0xff & hash[i]);
+	            if(hex.length() == 1) hexString.append('0');
+	            hexString.append(hex);
+	        }
+
+	        return hexString.toString();
+	    } catch(Exception e){
+	       Logger.log(e.getMessage(), e);
+	       return "";
+	    }
+	}
+	
 	private void buildPage(ShopUser user) {
 		String username = "";
 		if (user == null) {

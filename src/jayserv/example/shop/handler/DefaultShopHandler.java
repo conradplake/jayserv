@@ -31,8 +31,4 @@ public class DefaultShopHandler extends ServiceHandler implements Links {
 
 	public static final String ATTR_SHOPUSER = "ShopUser";
 
-	@Override
-	public void handleSecured(ServiceContext servicecontext) throws ServiceException {
-		// Override me
-	}
 }
