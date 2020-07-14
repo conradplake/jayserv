@@ -6,16 +6,16 @@
     <user>
     	<id>2</id>
   	<name>guest</name>
-  	<password>guest</password>
+  	<password>84983c60f7daadc1cb8698621f802c0d9f9a3c3c295c810748fb048115c186ec</password>
   	<privilegeID>3</privilegeID>
     </user>
     <user>
     	<id>3</id>
   	<name>customer</name>
-  	<password>customer</password>
+  	<password>b6c45863875e34487ca3c155ed145efe12a74581e27befec5aa661b8ee8ca6dd</password>
   	<privilegeID>2</privilegeID>
     </user>
-  <user><id>5</id><name>Conrad</name><password>admin</password><privilegeID>1</privilegeID></user><user><id>6</id><name>a</name><password>a</password><privilegeID>1</privilegeID></user></users>
+  <user><id>5</id><name>Conrad</name><password>8c6976e5b5410415bde908bd4dee15dfb167a9c873fc4bb8a81f6f2ab448a918</password><privilegeID>1</privilegeID></user><user><id>6</id><name>a</name><password>ca978112ca1bbdcafac231b39a23dc4da786eff8147c4e72b9807785afee48bb</password><privilegeID>1</privilegeID></user></users>
   
   <privileges>
     <privilege>
