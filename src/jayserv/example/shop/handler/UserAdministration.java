@@ -97,7 +97,7 @@ public class UserAdministration extends DefaultShopHandler implements ShopInputE
 	
 	Element passwdAttr = new Element("password");
 	if(userPassword!=null){
- 	  passwdAttr.setText(userPassword);
+ 	  passwdAttr.setText(LoginHandler.sha256(userPassword));
 	}
 	
 	Element privAttr = new Element("privilegeID");

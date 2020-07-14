@@ -83,7 +83,7 @@ public class LoginHandler extends ResponseHandler implements ShopInputElements {
 		return priv;
 	}
 
-	private static String sha256(String base) {
+	protected static String sha256(String base) {
 		
 		if(base==null) {
 			return "";
