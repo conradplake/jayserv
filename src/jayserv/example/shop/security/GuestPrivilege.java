@@ -24,7 +24,7 @@ USA
 
 package jayserv.example.shop.security;
 
-import jayserv.service.security.Privilege;
+import jayserv.service.Privilege;
 
 public class GuestPrivilege implements Privilege
 {
